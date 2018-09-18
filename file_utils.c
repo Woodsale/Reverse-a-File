@@ -25,8 +25,8 @@ int write_file( char* filename, char *buffer, int size){
 	FILE *fileW, *fileR;
 	fileR = fopen(buffer,"r");
 	fileW = fopen(filename,"w");
-
-	fwrite(fileW,size,1,fileR);
+	
+	fwrite(fileR,size,1,fileW);
 	
 	return 0;
 }

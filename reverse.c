@@ -8,7 +8,7 @@ int main(int argc, char** argv){
 	FILE *fp, *fpw;
 	char *buffer;
 
-	//fpw = fopen("NewText.txt","w");
+	fpw = fopen("NewText.txt","w");
 
 	struct stat st;
 	stat("Text.txt", &st);
@@ -16,8 +16,8 @@ int main(int argc, char** argv){
 
 	read_file("Text.txt",&buffer);
 	
-	//fwrite(buffer,size,1,fpw);
-	write_file("NewText.txt",buffer,size);
+	fwrite(buffer,size,1,fpw);
+	//write_file("NewText.txt",buffer,size);	
 	return 0;
 }
 
