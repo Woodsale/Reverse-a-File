@@ -6,7 +6,7 @@
 
 int main(int argc, char** argv){
 	FILE *fp, *fpw;
-	char *buffer;
+	char *buffer,*temp;
 
 	fpw = fopen("NewText.txt","w");
 
@@ -15,9 +15,18 @@ int main(int argc, char** argv){
 	int size = st.st_size;
 
 	read_file("Text.txt",&buffer);
-	
-	fwrite(buffer,size,1,fpw);
-	//write_file("NewText.txt",buffer,size);	
+
+	temp = malloc(size * sizeof(char));
+	int j = -1;
+	for(int i = size;i>=0;i--){
+		temp[j] = buffer[i];
+		j++;
+	}
+	//temp[size] = '\0';
+	//printf("%c",buffer[0]);
+	//newtwxt,buffer,size
+	write_file("NewText.txt",temp,size);
+	free(temp);	
 	return 0;
 }
 

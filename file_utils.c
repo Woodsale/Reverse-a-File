@@ -13,8 +13,8 @@ int read_file( char* filename, char **buffer ){
 	stat(filename, &st);
 	int size = st.st_size;
 
-	*buffer = malloc(size * sizeof(char));
-	
+	*buffer = malloc(size * sizeof(char));	
+
 	fread(*buffer,size,1,file);
 	fclose(file);
 	return 0;	
@@ -22,11 +22,12 @@ int read_file( char* filename, char **buffer ){
 }
 
 int write_file( char* filename, char *buffer, int size){
-	FILE *fileW, *fileR;
-	fileR = fopen(buffer,"r");
-	fileW = fopen(filename,"w");
+	//fwrite(buffer,size,0,fpw);
 	
-	fwrite(fileR,size,1,fileW);
+	FILE *fileW;
+	fileW = fopen(filename,"w");	
+	
+	fwrite(buffer,size,1,fileW);
 	
 	return 0;
 }
