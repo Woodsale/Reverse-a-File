@@ -5,16 +5,18 @@
 #include <sys/stat.h>
 
 int main(int argc, char** argv){
+	//argv[1] "Text.txt"
+	//argv[2] "NewText.txt"
 	FILE *fp, *fpw;
 	char *buffer,*temp;
 
-	fpw = fopen("NewText.txt","w");
+	fpw = fopen(argv[2],"w");
 
 	struct stat st;
-	stat("Text.txt", &st);
+	stat(argv[1], &st);
 	int size = st.st_size;
 
-	read_file("Text.txt",&buffer);
+	read_file(argv[1],&buffer);
 
 	temp = malloc(size * sizeof(char));
 	int j = -1;
@@ -25,7 +27,7 @@ int main(int argc, char** argv){
 	//temp[size] = '\0';
 	//printf("%c",buffer[0]);
 	//newtwxt,buffer,size
-	write_file("NewText.txt",temp,size);
+	write_file(argv[2],temp,size);
 	free(temp);	
 	return 0;
 }
